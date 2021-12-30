@@ -3,9 +3,12 @@ package com.savala.busymaps;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -13,9 +16,12 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 public class StartActivity extends AppCompatActivity {
 
+    //constants
     private static final String TAG = "StartActivity";
-
     private static final int ERROR_DIALOG_REQUEST = 9001;
+
+    //widgets
+    private Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +34,18 @@ public class StartActivity extends AppCompatActivity {
         if(isServicesOK()){
             init();
         }
+
+        startButton = (Button) findViewById(R.id.start_button);
     }
 
     private void init(){
-
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StartActivity.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     //method that checks whether the user's Play services is up to date

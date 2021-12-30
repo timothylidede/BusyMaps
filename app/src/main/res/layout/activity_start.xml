@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/busy_maps_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_centerInParent="true"
         android:src="@drawable/ic_baseline_emoji_transportation_24"/>
 
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Busy Maps"
-        android:textSize="25sp"
+        android:textSize="22sp"
         android:fontFamily="monospace"
         android:layout_below="@+id/busy_maps_logo"
         android:layout_centerHorizontal="true"
@@ -36,7 +36,7 @@
         android:textColor="@color/white"
         app:backgroundTint="#00BCD4"
         android:text="START"
-        android:textSize="17sp"
+        android:textSize="16sp"
         android:background="@drawable/custom_button"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="70dp"
