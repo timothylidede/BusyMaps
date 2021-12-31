@@ -8,11 +8,22 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        Toast.makeText(this, "Map is ready", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onMapReady: map is ready");
+        mMap = googleMap;
+    }
 
     //constants
     private static final String TAG = "MapActivity";
@@ -22,6 +33,7 @@ public class MapActivity extends AppCompatActivity {
 
     //vars
     private Boolean mLocationPermissionGranted = false;
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +42,19 @@ public class MapActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_map);
+
+        getLocationPermission();
     }
 
     private void initMap(){
-        SupportMapFragment
+        Log.d(TAG, "initMap: initializing map");
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
+        mapFragment.getMapAsync(MapActivity.this);
     }
 
     private void getLocationPermission(){
+        Log.d(TAG, "getLocationPermission: getting location permissions");
         String[] permissions = {FINE_LOCATION, COARSE_LOCATION};
 
         if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
@@ -49,11 +67,16 @@ public class MapActivity extends AppCompatActivity {
                         permissions,
                         LOCATION_PERMISSION_REQUEST_CODE);
             }
+        }else{
+            ActivityCompat.requestPermissions(this,
+                    permissions,
+                    LOCATION_PERMISSION_REQUEST_CODE);
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.d(TAG, "onRequestPermissionsResult: called");
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         mLocationPermissionGranted = false;
@@ -64,12 +87,15 @@ public class MapActivity extends AppCompatActivity {
                     for(int i = 0; i < grantResults.length; i++){
                         if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
                             mLocationPermissionGranted = false;
+                            Log.d(TAG, "onRequestPermissionsResult: permission failed");
                             return;
                         }
                     }
+                    Log.d(TAG, "onRequestPermissionsResult: permission granted");
                     mLocationPermissionGranted = true;
 
                     //initialize our map
+                    initMap();
                 }
             }
         }

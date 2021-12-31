@@ -8,3 +8,5 @@ An Android Mobile App that uses Google Maps API to give information on businesse
 * Using Maps SDK on an Android Project
 * Using a Support Fragment in XML to host the map
 * Using an API Key
+* Explicitly getting map permissions
+* OnMapReadyCallBack method use
