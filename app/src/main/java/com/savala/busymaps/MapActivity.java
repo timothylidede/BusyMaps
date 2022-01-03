@@ -9,6 +9,7 @@ import com.google.android.gms.location.LocationServices;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -65,6 +67,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     public void onComplete(@NonNull Task task) {
                         if(task.isSuccessful()){
                             Log.d(TAG, "onComplete: found location");
+
+                            Location currentLocation = (Location) task.getResult();
+                        }else{
+                            Log.d(TAG, "onComplete: current location is null");
+                            Toast.makeText(MapActivity.this, "Unable to get current location", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -73,6 +80,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage());
         }
 
+    }
+
+    private void moveCamera(LatLng latLng, float zoom){
+        Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude);
     }
 
     private void initMap(){
