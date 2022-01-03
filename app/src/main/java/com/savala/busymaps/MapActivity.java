@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -52,6 +54,24 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private void getDeviceLocation(){
         Log.d(TAG, "getDeviceLocation: getting the current device location");
+
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        try{
+            if(mLocationPermissionGranted){
+                Task location = mFusedLocationProviderClient.getLastLocation();
+                location.addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if(task.isSuccessful()){
+                            Log.d(TAG, "onComplete: found location");
+                        }
+                    }
+                });
+            }
+        }catch(SecurityException e){
+            Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage());
+        }
 
     }
 
