@@ -10,3 +10,4 @@ An Android Mobile App that uses Google Maps API to give information on businesse
 * Using an API Key
 * Explicitly getting map permissions
 * OnMapReadyCallBack method use
+* Use of FusedLocationProviderClient Object in getting current location

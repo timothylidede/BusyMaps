@@ -34,11 +34,11 @@ public class StartActivity extends AppCompatActivity {
         if(isServicesOK()){
             init();
         }
-
-        startButton = (Button) findViewById(R.id.start_button);
     }
 
     private void init(){
+        startButton = (Button) findViewById(R.id.start_button);
+
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
