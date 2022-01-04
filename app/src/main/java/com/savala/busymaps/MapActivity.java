@@ -14,6 +14,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -63,6 +64,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
+    //widgets
+
+    private EditText mSearchText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +77,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         getSupportActionBar().hide();
         setContentView(R.layout.activity_map);
 
+        mSearchText = (EditText) findViewById(R.id.input_search);
+
         getLocationPermission();
+    }
+    
+    private void init(){
+        Log.d(TAG, "init: initializing");
     }
 
     private void getDeviceLocation(){
