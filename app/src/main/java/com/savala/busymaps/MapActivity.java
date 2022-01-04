@@ -10,6 +10,8 @@ import com.google.android.gms.location.LocationServices;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +29,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -106,7 +112,23 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     private void geoLocate(){
-        
+        Log.d(TAG, "geoLocate: geolocating");
+
+        String searchString = mSearchText.getText().toString();
+
+        Geocoder geocoder = new Geocoder(MapActivity.this);
+        List<Address> list = new ArrayList<>();
+        try{
+            list = geocoder.getFromLocationName(searchString, 1);
+        }catch(IOException e){
+            Log.e(TAG, "geoLocate: IOException " + e.getMessage());
+        }
+
+        if(list.size() > 0){
+            Address address = list.get(0);
+
+            
+        }
     }
 
     private void getDeviceLocation(){
