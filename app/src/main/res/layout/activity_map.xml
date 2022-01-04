@@ -38,27 +38,20 @@
             map:uiZoomControls="true"
             map:uiRotateGestures="true"
             map:cameraTilt="30"
-            android:name="com.google.android.gms.maps.SupportMapFragment">
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@color/white"
-                    android:layout_marginLeft="10dp"
-                    android:elevation="10dp">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:layout_marginLeft="10dp"
+            app:cardElevation="20dp"
+            app:cardCornerRadius="20dp">
 
 
-                </androidx.cardview.widget.CardView>
-
-
-            </RelativeLayout>
-        </fragment>
+        </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>
 
