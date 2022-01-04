@@ -180,11 +180,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
-        MarkerOptions options = new MarkerOptions()
-                .position(latLng)
-                .title(title);
+        if(!title.equals("My Location")){
+            MarkerOptions options = new MarkerOptions()
+                    .position(latLng)
+                    .title(title);
 
-        mMap.addMarker(options);
+            mMap.addMarker(options);
+        }
     }
 
     private void initMap(){
