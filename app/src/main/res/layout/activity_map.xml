@@ -28,6 +28,25 @@
         android:elevation="20dp"
         android:backgroundTint="@color/white">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:elevation="10dp">
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             xmlns:map="http://schemas.android.com/apk/res-auto"
