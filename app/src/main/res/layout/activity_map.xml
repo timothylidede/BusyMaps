@@ -69,6 +69,7 @@
                     android:layout_toRightOf="@+id/search_icon"
                     android:layout_centerVertical="true"
                     android:textSize="15sp"
+                    android:layout_marginLeft="7dp"
                     android:textColor="@color/black"
                     android:id="@+id/input_search"
                     android:background="null"
