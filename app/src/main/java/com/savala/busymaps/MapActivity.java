@@ -113,6 +113,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 return false;
             }
         });
+
+        hideSoftKeyboard();
     }
 
     private void geoLocate(){
@@ -187,6 +189,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             mMap.addMarker(options);
         }
+
+        hideSoftKeyboard();
     }
 
     private void initMap(){
@@ -246,6 +250,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 }
             }
         }
+    }
 
+    private void hideSoftKeyboard(){
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 }
