@@ -41,6 +41,7 @@
             android:name="com.google.android.gms.maps.SupportMapFragment" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -49,6 +50,18 @@
             android:layout_marginLeft="10dp"
             app:cardElevation="20dp"
             app:cardCornerRadius="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/ic_baseline_search_24"/>
+            </RelativeLayout>
 
 
         </androidx.cardview.widget.CardView>
