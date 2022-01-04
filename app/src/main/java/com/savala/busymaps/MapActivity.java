@@ -178,7 +178,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         MarkerOptions options = new MarkerOptions()
                 .position(latLng)
-                .title(tit)
+                .title(title);
+
+        mMap.addMarker(options);
     }
 
     private void initMap(){
