@@ -133,7 +133,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             Log.d(TAG, "geoLocate: found a location: " + address.toString());
 
-            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM);
+            moveCamera(new LatLng(address.getLatitude(),
+                    address.getLongitude()),
+                    DEFAULT_ZOOM,
+                    address.getLocality());
         }
     }
 
@@ -154,7 +157,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                             Location currentLocation = (Location) task.getResult();
 
                             moveCamera(new LatLng(currentLocation.getLatitude(),
-                                    currentLocation.getLongitude()), DEFAULT_ZOOM);
+                                    currentLocation.getLongitude()), DEFAULT_ZOOM,
+                                    "My Location");
                         }else{
                             Log.d(TAG, "onComplete: current location is null");
                             Toast.makeText(MapActivity.this,
