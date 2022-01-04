@@ -89,6 +89,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mSearchText = (EditText) findViewById(R.id.input_search);
 
         getLocationPermission();
+
+        init();
     }
     
     private void init(){
@@ -127,7 +129,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         if(list.size() > 0){
             Address address = list.get(0);
 
-            
+
         }
     }
 
