@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F44C36"
+    android:background="#2AB57D"
     tools:context=".MapActivity">
 
     <ImageView
@@ -56,11 +56,23 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+                    android:id="@+id/search_icon"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/ic_baseline_search_24"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/search_icon"
+                    android:layout_centerVertical="true"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:id="@+id/input_search"
+                    android:background="null"
+                    android:hint="Enter Address, City or Zip Code"/>
             </RelativeLayout>
 
 
