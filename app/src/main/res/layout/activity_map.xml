@@ -74,9 +74,9 @@
                         android:layout_centerVertical="true"
                         android:textSize="15sp"
                         android:layout_marginLeft="7dp"
+                        android:layout_marginRight="15dp"
                         android:textColor="@color/black"
                         android:id="@+id/input_search"
-                        android:background="null"
                         android:imeOptions="actionSearch"
                         android:hint="Enter Address, City or Zip Code"/>
                 </RelativeLayout>
