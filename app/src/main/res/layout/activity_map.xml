@@ -72,6 +72,7 @@
                     android:textColor="@color/black"
                     android:id="@+id/input_search"
                     android:background="null"
+                    android:imeOptions="actionSearch"
                     android:hint="Enter Address, City or Zip Code"/>
             </RelativeLayout>
 
