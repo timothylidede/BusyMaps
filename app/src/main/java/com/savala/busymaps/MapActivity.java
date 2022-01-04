@@ -130,7 +130,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         if(list.size() > 0){
             Address address = list.get(0);
 
+            Log.d(TAG, "geoLocate: found a location: " + address.toString());
 
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM);
         }
     }
 
